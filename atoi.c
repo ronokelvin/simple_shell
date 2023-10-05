@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * interactive_mode - shell in interactive mode.
+ * interactive_mode - shell is  in interactive mode.
  * @info: the address of the struct.
  *
  * Return: returns 1 if shell is interactive mode.
