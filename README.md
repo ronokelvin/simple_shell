@@ -1,6 +1,6 @@
- #Simple Shell in C#
+# Simple Shell in C#
 We created a simple shell as part of our Alx journey in learning software engineering.
- #List of allowed functions and system calls in the project include
+# List of allowed functions and system calls in the project include
 	* access (man 2 access)
 	* chdir (man 2 chdir)
 	* close (man 2 close)
@@ -32,9 +32,9 @@ We created a simple shell as part of our Alx journey in learning software engine
 	* wait3 (man 2 wait3)
 	* wait4 (man 2 wait4)
 	* write (man 2 write)
-~Our shell was compiled usind:
+# Our shell was compiled usind:
 	*gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
- #From the above function we were supposed to create a simple shell that can:
+# From the above function we were supposed to create a simple shell that can:
 * Display a pompt and wait for user to type a command. A command line always ending with a new line.
 * The prompt is displayed again each time a command has been executed.
 * The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
