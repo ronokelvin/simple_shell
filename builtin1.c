@@ -38,16 +38,14 @@ int unset_alias(info_t *info, char *str)
 
 	/* Store the character after the equal sign (alias value) in 'c'. */
 	c = *p;
-	/* Replace the equal sign with the null terminator 
-		to separate the alias name. */
+	/* Replace the equal sign with the null terminator to separate the alias name. */
 	*p = 0;
 
 	/* Get the index of the alias in the alias list using 'get_node_index'. */
 	ret = delete_node_at_index(&(info->alias),
 							   get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 
-	/* Restore the equal sign character back to 
-	its original position in 'str'. */
+	/* Restore the equal sign character back to its original position in 'str'. */
 	*p = c;
 
 	return (ret); /* Return 0 on success, 1 on error. */
@@ -74,11 +72,10 @@ int set_alias(info_t *info, char *str)
 
 	if (!*++p)
 	{
-		/* If there is no alias value after the equal sign, 
-		unset the alias and return success (0). */
+		/* If there is no alias value after the equal sign, unset the alias and return success (0). */
 		return (unset_alias(info, str));
 	}
-		
+
 	/* Unset any existing alias with the same name. */
 	unset_alias(info, str);
 
