@@ -17,16 +17,11 @@ int my_exit(info_t *info)
 	/* Check if there is an exit argument provided in info->argv[1]. */
 	if (info->argv[1])
 	{
-		/* Convert the exit argument to an integer using 
-			the _erroratoi function. */
 		exitcheck = _erroratoi(info->argv[1]);
-
-		/* Check if _erroratoi returned -1, indicating an 
-			invalid number format. */
+		/*Check if _erroratoi returned -1, indicating an invalid number format.*/
 		if (exitcheck == -1)
 		{
-			/* Set the status to 2 and print an error message 
-				indicating an illegal number format. */
+			/* Set the status to 2 and print an error message indicating an illegal number format. */
 			info->status = 2;
 			print_error(info, "Illegal number: ");
 			_inputs(info->argv[1]);
@@ -40,8 +35,7 @@ int my_exit(info_t *info)
 		return (-2); /* Return -2 to indicate that the exit status should be used. */
 	}
 
-	/* If no exit argument is provided, set info->err_num to -1 
-		and return -2 to indicate exit should be used. */
+	/* If no exit argument is provided, set info->err_num to -1 and return -2 to indicate exit should be used. */
 	info->err_num = -1;
 	return (-2);
 }
@@ -72,15 +66,13 @@ int my_cd(info_t *info)
 		/* Get the home directory using the '_getenv' function. */
 		dir = _getenv(info, "HOME=");
 
-		/* If the home directory is not set, 
-			use the 'PWD' environment variable as the default directory. */
+		/* If the home directory is not set, use the 'PWD' environment variable as the default directory. */
 		if (!dir)
 			chdir_ret = chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
 	}
-	/* Check if the argument is a hyphen ('-'), 
-		representing the previous working directory. */
+	/* Check if the argument is a hyphen ('-'), representing the previous working directory. */
 	else if (my_strcmp(info->argv[1], "-") == 0)
 	{
 		/* Check if the 'OLDPWD' environment variable is not set. */
@@ -92,8 +84,7 @@ int my_cd(info_t *info)
 			return (1);
 		}
 
-		/* Print the 'OLDPWD' environment variable and 
-			change to that directory. */
+		/* Print the 'OLDPWD' environment variable and change to that directory. */
 		_puts(_getenv(info, "OLDPWD="));
 		_putchar('\n');
 		chdir_ret = chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
@@ -105,16 +96,14 @@ int my_cd(info_t *info)
 	/* Check if the chdir operation was unsuccessful. */
 	if (chdir_ret == -1)
 	{
-		/* Print an error message indicating that the 'cd' 
-		operation failed for the specified directory. */
+		/* Print an error message indicating that the 'cd' operation failed for the specified directory. */
 		print_error(info, "can't cd to ");
 		_inputs(info->argv[1]);
 		_inputchar('\n');
 	}
 	else
 	{
-		/* Update the 'OLDPWD' and 'PWD' environment variables 
-		with the new and old working directories, respectively. */
+		/* Update the 'OLDPWD' and 'PWD' environment variables with the new and old working directories, respectively. */
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
 		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
