@@ -33,8 +33,7 @@ int _inputchar(char c)
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		/**Flush the buffer to stderr when buffer is full
-		 * 	or 'BUF_FLUSH' is passed.*/
+		/*Flush the buffer to stderr when buffer is full or 'BUF_FLUSH' is passed.*/
 		write(2, buf, i);
 		i = 0;
 	}
@@ -44,8 +43,7 @@ int _inputchar(char c)
 		/*Store the character in the buffer if not 'BUF_FLUSH'.*/
 		buf[i++] = c;
 	}
-		
-	return (1);
+		return (1);
 }
 
 /**
@@ -62,8 +60,7 @@ int _putfd(char c, int fd)
 
 	if (c == BUF_FLUSH || n >= WRITE_BUF_SIZE)
 	{
-		/**Flush the buffer to the specified file descriptor
-		 * 	when buffer is full or 'BUF_FLUSH' is passed.*/
+		/**Flush the buffer to the specified file descriptor when buffer is full or 'BUF_FLUSH' is passed.*/
 		write(fd, buf, n);
 		n = 0;
 	}
@@ -73,8 +70,7 @@ int _putfd(char c, int fd)
 		/**Store the character in the buffer if not 'BUF_FLUSH'.*/
 		buf[n++] = c;
 	}
-		
-	return (1);
+		return (1);
 }
 
 /**
