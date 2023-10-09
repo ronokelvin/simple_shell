@@ -32,12 +32,19 @@ We created a simple shell as part of our Alx journey in learning software engine
 	* wait3 (man 2 wait3)
 	* wait4 (man 2 wait4)
 	* write (man 2 write)
-# Our shell was compiled usind:
+# Our shell was compiled using:
 	*gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 # From the above function we were supposed to create a simple shell that can:
 * Display a pompt and wait for user to type a command. A command line always ending with a new line.
 * The prompt is displayed again each time a command has been executed.
 * The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
 * You have to handle the "end-of-file"
+* Handle command lines with arguments.(Simple shell 0.1 +)
+* Handle the PATH (simple shell 0.2+)
+* fork must not be called if the command doesn't exist.(simple shell 0.2+)
+* Implement the exit built-in, that exits the shell
+* Usage: exit
+* You don't have to handle any arguments to the built-in exit(simple shell 0.3+)
+* Implement the env built-in, that prints the current environment.(simple shell 0.4 +)
 
 
