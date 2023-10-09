@@ -9,8 +9,7 @@
  */
 int my_env(info_t *info)
 {
-	/** Call the print_list_str function
-	 * to print the environment linked list */
+	/** Call the print_list_str function to print the environment linked list */
 	print_list_str(info->env);
 
 	return (0);
@@ -19,7 +18,7 @@ int my_env(info_t *info)
 /**
  * _getenv - Gets the value of an environment variable.
  * @info: Structure containing potential arguments.
- * 			Used to maintain constant function prototype.
+ *		Used to maintain constant function prototype.
  * @name: Env var name.
  *
  * Return: The value of the environment variable, or NULL if not found.
@@ -35,8 +34,7 @@ char *_getenv(info_t *info, const char *name)
 		/* Check if the current node's string starts with the given name */
 		p = starts_with(node->str, name);
 
-		/** If a match is found,
-		 *	return the address of the next character (value) */
+		/** If a match is found, return the address of the next character (value) */
 		if (p && *p)
 			return (p);
 
@@ -70,8 +68,7 @@ int my_setenv(info_t *info)
 		return (1);
 	}
 
-	/** Call the _setenv function to initialize
-	 * or modify the environment variable */
+	/** Call the _setenv function to initialize or modify the environment variable */
 	if (_setenv(info, info->argv[1], info->argv[2]))
 		return (0);
 
@@ -110,9 +107,9 @@ int my_unsetenv(info_t *info)
 
 /**
  * display_env_list - Populates an environment linked list
- * 						with environment variables.
+ *			 with environment variables.
  * @info: Structure containing potential arguments.
- * 			Used to maintain constant function prototype.
+ *		Used to maintain constant function prototype.
  *
  * Return: Always 0.
  */
@@ -128,8 +125,7 @@ int display_env_list(info_t *info)
 		add_node_end(&node, environ[i], 0);
 	}
 
-	/** Update the 'env' member of the info structure to point to
-	 *	the populated linked list */
+	/*Update the 'env' member of the info structure to point to the populated linked list */
 	info->env = node;
 
 	return (0);
