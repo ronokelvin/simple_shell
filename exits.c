@@ -80,8 +80,7 @@ char *_strncat(char *dest, char *src, int n)
 char *_strchr(char *s, char c)
 {
 	/* Iterate through the string until the character 'c' is found */
-	do
-	{
+	do {
 		if (*s == c)
 			return (s);
 	} while (*s++ != '\0');
