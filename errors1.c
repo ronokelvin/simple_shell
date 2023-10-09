@@ -128,8 +128,7 @@ char *convert_number(long int num, int base, int flags)
 	*ptr = '\0';
 
 	/* Convert the number to the specified base */
-	do
-	{
+	do {
 		*--ptr = array[n % base];
 		n /= base;
 	} while (n != 0);
