@@ -149,8 +149,7 @@ int read_history(info_t *info)
 
 /**
  * build_history_list - Adds an entry to a history linked list.
- * @info: Structure containing potential arguments. 
- * 			Used to maintain history.
+ * @info: Structure containing potential arguments used to maintain history.
  * @buf: The buffer containing the history command to add.
  * @linecount: The history linecount, histcount.
  *
@@ -160,17 +159,14 @@ int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL; /* Create a pointer to a list node */
 
-	/* If the history list is not empty,
-	set the node pointer to the current head */
+	/* set the node pointer to the current head if history list is not empty */
 	if (info->history)
 		node = info->history;
 
-	/* Add a new node to the end of the history list
-	with the provided command and linecount */
+	/* Add a new node to the end of the history list with the provided command and linecount */
 	add_node_end(&node, buf, linecount);
 
-	/* If the history list was empty,
-	update the head pointer to the newly added node */
+	/* If the history list was empty update the head pointer to the newly added node */
 	if (!info->history)
 		info->history = node;
 
@@ -191,8 +187,7 @@ int renumber_history(info_t *info)
 	/* Traverse the history list and update the node numbers */
 	while (node)
 	{
-		/*Assign the current value of 'i' to the 'num' field of the node
-		and then increment 'i'*/
+		/*Assign the current value of 'i' to the 'num' field of the node and then increment 'i'*/
 		node->num = i++;
 		/*Move to the next node in the list*/
 		node = node->next;
