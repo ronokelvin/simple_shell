@@ -103,9 +103,8 @@ void free_info(info_t *info, int all)
 			/* Close the read file descriptor if it is greater than 2 */
 			close(info->readfd);
 		}
-			
 		_putchar(BUF_FLUSH); /* Flush the buffer */
 
-		/* All other fields will be freed automatically when the struct is deallocated */
+		/* Struct deallocation frees all other fields using the free function*/
 	}
 }
