@@ -41,8 +41,7 @@ int _unsetenv(info_t *info, char *var)
 	/* Pointer used for string comparison */
 	char *p;
 
-	/** If the linked list is empty or the variable string is empty,
-	 * 		return 0 indicating failure */
+	/**Return 0 indicating failure if linked list is empty*/
 	if (!node || !var)
 		return (0);
 
@@ -55,8 +54,7 @@ int _unsetenv(info_t *info, char *var)
 		{
 			/* Delete the node at index i */
 			info->env_changed = delete_node_at_index(&(info->env), i);
-			/** Reset the index to 0 after deleting the node
-			 * 	to start from the beginning */
+			/**Index back 0 after deleting the node to start from the beginning */
 			i = 0;
 			/* Reset the node pointer to the new head of the linked list */
 			node = info->env;
@@ -68,8 +66,7 @@ int _unsetenv(info_t *info, char *var)
 		/* Increment the index for the next iteration */
 		i++;
 	}
-	/** Return 1 if the environment variable was found and deleted,
-	 * otherwise return 0 */
+	/** Return 1 for success and 0 for failure*/
 	return (info->env_changed);
 }
 
