@@ -50,7 +50,8 @@ char *duplicate_chars(char *pathstr, int start, int stop)
 	}
 
 	buf[k] = 0;	  /* Null-terminate the buffer to create a valid C-string */
-	return (buf); /* Return a pointer to the buffer containing the duplicated characters */
+	return (buf);
+	/* Pointer return to buffer containing the duplicated characters */
 }
 
 /**
@@ -69,7 +70,7 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	if (!pathstr)
 		return (NULL);
 
-	/* Check if the cmd starts with "./" and is a valid command in the current directory */
+	/* if cmd starts with "./" and valid then current directory */
 	if ((my_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
 		if (is_cmd(info, cmd))
@@ -106,5 +107,6 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 		i++; /* Move to the next character in pathstr */
 	}
 
-	return (NULL); /* Return NULL if the command was not found in any path directory */
+	return (NULL);
+	/* Return NULL if the command was not found in any path directory */
 }
