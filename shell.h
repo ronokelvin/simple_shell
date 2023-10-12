@@ -52,7 +52,7 @@ typedef struct liststr
 
 /**
  * struct passinfo - Custom data structure for holding pseudo-arguments
- * 						to be passed into a function.
+ * to be passed into a function.
  * @arg: String generated from getline containing arguments.
  * @argv: Array of strings generated from the argument string.
  * @path: String path for the current command.
@@ -65,7 +65,7 @@ typedef struct liststr
  * @environ: Custom modified copy of the environment variables from the LL env.
  * @history: Linked list node representing the history.
  * @alias: Linked list node representing aliases.
- * @env_changed: Flag indicating whether the environment variables were changed.
+ * @env_changed: Flag indicator for changed environment variables..
  * @status: Status of the last executed command.
  * @cmd_buf: Address of the pointer to the command buffer used for chaining.
  * @cmd_buf_type: Type of command chaining (e.g., ||, &&, ;).
