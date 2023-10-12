@@ -12,9 +12,7 @@ int is_chain(info_t *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
-	/* Check if the current character and the next character
-	 * form a CMD_OR (||) 
-	 */
+	/* Check if the current character and the next character form a CMD_OR (||)*/
 	if (buf[j] == '|' && buf[j + 1] == '|')
 	{
 		/* Set the current position to NULL character to end the command */
@@ -22,9 +20,7 @@ int is_chain(info_t *info, char *buf, size_t *p)
 		j++; /* Increment j to skip the second '|' character */
 		info->cmd_buf_type = CMD_OR; /* Set the command chain type to CMD_OR */
 	}
-	/* Check if the current character and the next character 
-	* form a CMD_AND (&&) 
-	*/
+	/* Check if the current character and the next character form a CMD_AND (&&)*/
 	else if (buf[j] == '&' && buf[j + 1] == '&')
 	{
 		/* Set the current position to NULL character to end the command */
@@ -68,7 +64,8 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 		/* If the last command's exit status is non-zero (failed), break the chain */
 		if (info->status)
 		{
-			buf[i] = 0; /* Set the current position to NULL character to end the chain */
+			buf[i] = 0;
+			/* Set the current position to NULL character to end the chain */
 			j = len;	/* Set j to len to stop further processing in the buffer */
 		}
 	}
@@ -76,12 +73,11 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 	/* Check if the command chain type is CMD_OR */
 	if (info->cmd_buf_type == CMD_OR)
 	{
-		/* If the last command's exit status is zero (successful),
-		* break the chain 
-		*/
+		/* If the last command's exit status is zero (successful),break the chain*/
 		if (!info->status)
 		{
-			buf[i] = 0; /* Set the current position to NULL character to end the chain */
+			buf[i] = 0;
+			/* Set the current position to NULL character to end the chain */
 			j = len;	/* Set j to len to stop further processing in the buffer */
 		}
 	}
@@ -161,10 +157,7 @@ int replace_vars(info_t *info)
 			continue;
 		}
 
-		/* If the token is an environment variable (e.g., "$PATH"),
-		 * look for the corresponding variable in info->env list
-		 * and replace it with its value.
-		 */
+		/* If the token is an environment variable (e.g., "$PATH"),look for the corresponding variable in info->env list and replace it with its value.*/
 		node = node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
@@ -173,9 +166,7 @@ int replace_vars(info_t *info)
 			continue;
 		}
 
-		/* If the token is a single "$" (no variable name),
-		 * replace it with an empty string.
-		 */
+		/* If the token is a single "$" (no variable name),replace it with an empty string.*/
 		replace_string(&info->argv[i], _strdup(""));
 	}
 
