@@ -8,8 +8,7 @@
  */
 int bfree(void **ptr)
 {
-	/** Check if the pointer is not NULL
-	 * 		and points to a valid memory location */
+	/** Check if the pointer is not NULL and points to a valid memory location */
 	if (ptr && *ptr)
 	{
 		/* Free the memory pointed to by the pointer */
