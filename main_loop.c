@@ -12,38 +12,37 @@ int hsh(info_t *info, char **av)
 	ssize_t k = 0;
 	int builtin_ret = 0;
 
-	/* Shell loop */
+	/* Loop */
 	while (k != -1 && builtin_ret != -2)
 	{
-		/* Clear the info struct for the new command */
+		/* Info struct cleared for new command*/
 		clear_info(info);
 
 		/* Display prompt if in interactive mode */
 		if (interactive_mode(info))
 			_puts("$ ");
 
-		/* Read the user input character by character */
+		/* Reads input char by char */
 		_inputchar(BUF_FLUSH);
 		k = get_input(info);
 
 		if (k != -1)
 		{
-			/* Set info struct with parsed command */
+			/* info struct set with parsed command*/
 			set_info(info, av);
 
-			/* Check if the command is a built-in */
+			/* Check if command is builtin*/
 			builtin_ret = find_builtin(info);
 
-			/* If not a built-in, find and execute the command */
+			/* Else find and execute command */
 			if (builtin_ret == -1)
 				find_command(info);
 		}
-		/* If EOF is reached (Ctrl+D),
-		print a newline and exit the loop */
+		/* If EOF print newline and exit loop*/
 		else if (interactive_mode(info))
 			_putchar('\n');
 
-		/* Free memory allocated for the info struct */
+		/* Memory allocated is freed*/
 		free_info(info, 0);
 	}
 
@@ -53,17 +52,14 @@ int hsh(info_t *info, char **av)
 	/* Free remaining memory and exit */
 	free_info(info, 1);
 
-	/* If not in interactive mode and there was an error,
-	exit with status */
+	/* If not in interactive mode and there was an error,exit with status */
 	if (!interactive_mode(info) && info->status)
 		exit(info->status);
 
-	/* If a built-in function returns -2, 
-	exit with the specified error number */
+	/* If a built-in function returns -2,exit with the specified error number */
 	if (builtin_ret == -2)
 	{
-		/* If no specific error number is provided, 
-		exit with the status */
+		/* If no specific error number is provided,exit with the status */
 		if (info->err_num == -1)
 			exit(info->status);
 		/* Exit with the specified error number */
@@ -159,9 +155,7 @@ void find_command(info_t *info)
 		}
 		else if (*(info->arg) != '\n')
 		{
-			/* If none of the conditions are met and the command is not a newline,
-			 * set status to 127 and print an error message.
-			 */
+			/* If none of the conditions are met and the command is not a newline,set status to 127 and print an error message.*/
 			info->status = 127;
 			print_error(info, "not found\n");
 		}
@@ -185,12 +179,10 @@ void fork_command(info_t *info)
 	}
 	if (child_pid == 0)
 	{
-		/* --- Child process ---
-		 Attempt to execute the command using execve*/
+		/* --- Child process ---Attempt to execute the command using execve*/
 		if (execve(info->path, info->argv, get_environ(info)) == -1)
 		{
-			/*If execve returns - 1, an error occurred during execution,
-			 Free allocated memory in the info struct*/
+			/*If execve returns - 1, an error occurred during execution,`Free allocated memory in the info struct*/
 			free_info(info, 1);
 			/*Check the errno to determine the specific error*/
 			if (errno == EACCES)
@@ -200,20 +192,14 @@ void fork_command(info_t *info)
 	}
 	else
 	{
-		/* --- Parent process ---
-		Wait for the child process to finish execution
-		and retrieve its exit status*/
+		/* --- Parent process --- Wait for the child process to finish execution and retrieve its exit status*/
 		wait(&(info->status));
 		/* Check if the child process exited normally*/
 		if (WIFEXITED(info->status))
 		{
-			/*
-			Update the info status with the exit status of the child process
-			*/
+			/*Update the info status with the exit status of the child process*/
 			info->status = WEXITSTATUS(info->status);
-			/*
-			If the child process returned 126, it means "Permission denied"
-			*/
+			/*If the child process returned 126, it means "Permission denied"*/
 			if (info->status == 126)
 				print_error(info, "Permission denied\n");
 		}
