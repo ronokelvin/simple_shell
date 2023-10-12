@@ -104,8 +104,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
 
-	/** Traverse the linked list and find the node
-	 * 		with matching prefix and next character */
+	/** Linked list traversed finding node with matching prefix next character*/
 	while (node)
 	{
 		p = starts_with(node->str, prefix);
