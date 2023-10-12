@@ -33,7 +33,7 @@ char *_strdup(const char *str)
 
 /**
  * starts_with - Checks if the substring needle
- * 					starts with the string haystack.
+ * starts with the string haystack.
  * @haystack: The string to search.
  * @needle: The substring to find.
  *
@@ -49,8 +49,7 @@ char *starts_with(const char *haystack, const char *needle)
 			return (NULL);
 	}
 
-	/* If needle is found,
-	return the address of the next character in haystack */
+	/* If needle is found,return the address of the next character in haystack */
 	return ((char *)haystack);
 }
 
@@ -87,7 +86,6 @@ int _putchar(char c)
 {
 	static char buf[WRITE_BUF_SIZE];
 	static int i;
-	
 	/* Check if the character is the buffer flush symbol or buffer is full */
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
