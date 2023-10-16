@@ -9,7 +9,7 @@
  */
 int my_env(info_t *info)
 {
-	/** Call the print_list_str function to print the environment linked list */
+	/** Call the print_list_str function to print environment linked list */
 	print_list_str(info->env);
 
 	return (0);
