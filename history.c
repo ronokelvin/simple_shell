@@ -126,7 +126,7 @@ int read_history(info_t *info)
 		if (buf[i] == '\n')
 		{
 			buf[i] = 0;
-			build_history_list(info, buf + last, linecount++);
+	build_history_list(info, buf + last, linecount++);
 			last = i + 1;
 		}
 	}
@@ -163,10 +163,10 @@ int build_history_list(info_t *info, char *buf, int linecount)
 	if (info->history)
 		node = info->history;
 
-	/* Add a new node to the end of the history list with the provided command and linecount */
+	/* Add new node to end of history list with provided command and linecount */
 	add_node_end(&node, buf, linecount);
 
-	/* If the history list was empty update the head pointer to the newly added node */
+	/* If the history list was empty update head pointer to newly added node */
 	if (!info->history)
 		info->history = node;
 
@@ -187,7 +187,7 @@ int renumber_history(info_t *info)
 	/* Traverse the history list and update the node numbers */
 	while (node)
 	{
-		/*Assign the current value of 'i' to the 'num' field of the node and then increment 'i'*/
+		/*Current value of 'i' assign to 'num' field of node and then increment 'i'*/
 		node->num = i++;
 		/*Move to the next node in the list*/
 		node = node->next;

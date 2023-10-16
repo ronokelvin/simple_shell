@@ -29,7 +29,7 @@ int is_delimiter(char c, char *delimiter)
 }
 
 /**
- * is_alphabet - check if character is an alphabet.
+ * is_alphabet - check for an alphabet in a character.
  * @c: the character to be checked.
  *
  * Return: returns 1 if true and 0 if false.
