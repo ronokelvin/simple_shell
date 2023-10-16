@@ -3,7 +3,7 @@
 /**
  * input_buf - Buffers chained commands for processing.
  * @info: Pointer to the parameter struct.
- * @buf: Address of the buffer.
+ * @buf: Address of buffer.
  * @len: Address of the len variable.
  *
  * Return: The number of bytes read.
