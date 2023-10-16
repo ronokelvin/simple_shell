@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - the entry point
+ * main - entry point
  * @ac: the number of items in av (command-line arguments count)
  * @av: array of strings (command-line arguments)
  *
