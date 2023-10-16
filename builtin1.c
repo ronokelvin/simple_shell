@@ -19,7 +19,7 @@ int my_history(info_t *info)
 /**
  * unset_alias - Unsets an alias.
  * @info: The parameter struct.
- * @str: The string representing the alias to be unset in the format "alias_name".
+ * @str: The string representing the alias to be unset in format "alias_name".
  *
  * Return: Always 0 on success, 1 on error.
  */
