@@ -2,7 +2,7 @@
 
 /**
  * split_string - Splits a string into words. Repeat delimiters are ignored.
- * @str: The input string to be split.
+ * @str: Input string to be split.
  * @delimiters: The delimiter string used for splitting.
  *
  * Return: A pointer to an array of strings, or NULL on failure.
