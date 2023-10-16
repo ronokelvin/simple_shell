@@ -21,7 +21,7 @@ int my_exit(info_t *info)
 		/*Check if _erroratoi returned -1, indicating an invalid number format.*/
 		if (exitcheck == -1)
 		{
-			/* Set the status to 2 and print an error message indicating an illegal number format. */
+			/* Set status to 2 and print an error message indicating an illegal number format. */
 			info->status = 2;
 			print_error(info, "Illegal number: ");
 			_inputs(info->argv[1]);
